@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "151842475145",
+    "project_id": "gymbuddies-eceb0",
+    "storage_bucket": "gymbuddies-eceb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151842475145:android:51ffcbd5adba854e40ca58",
+        "android_client_info": {
+          "package_name": "com.example.gymbuddies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151842475145-6oim6itr3aa046hj47efpm654agpo0o0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gymbuddies",
+            "certificate_hash": "f1f0a7216ce5e7ef4859bddad94bc972d2789366"
+          }
+        },
+        {
+          "client_id": "151842475145-pssaahv3qa6fsiobnnr77nlihr4067t7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgmTZcYKlDS0FugbO6VoDk56BoM2GEvdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151842475145-pssaahv3qa6fsiobnnr77nlihr4067t7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
