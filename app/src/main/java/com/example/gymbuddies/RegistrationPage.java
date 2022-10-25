@@ -6,31 +6,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.gymbuddies.MainActivity;
-import com.example.gymbuddies.R;
 import com.example.gymbuddies.databinding.RegistrationPageBinding;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 
 public class RegistrationPage extends AppCompatActivity{
@@ -74,7 +51,7 @@ public class RegistrationPage extends AppCompatActivity{
             //  NavigationUI.setupWithNavController(binding.navView, navController);
         }
         public void openNewActivity(){
-            Intent intent = new Intent(this, com.example.gymbuddies.MainActivity.class);
+            Intent intent = new Intent(this, LoginOrRegisterActivity.class);
             startActivity(intent);
         }
 
