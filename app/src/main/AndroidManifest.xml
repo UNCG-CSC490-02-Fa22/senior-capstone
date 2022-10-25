@@ -14,8 +14,9 @@
         android:theme="@style/Theme.GymBuddies"
         tools:targetApi="31">
         <activity android:label="GymBuddies" android:name=".RegistrationPage"/>
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginOrRegisterActivity"
 
             android:exported="true"
             android:label="@string/app_name">
