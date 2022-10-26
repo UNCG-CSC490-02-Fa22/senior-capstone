@@ -1,5 +1,6 @@
 package com.example.gymbuddies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -133,10 +134,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-
+                UserCard userMatch = (UserCard) dataObject;
+                openBio(userMatch);
             }
         });
 
+    }
+    public void openBio(UserCard userMatch){
+        Intent intent = new Intent(this, MatchBioActivity.class);
+        intent.putExtra("userMatchName", userMatch.getName());
+        startActivity(intent);
     }
     private String userSex;
     private String oppositeSex;
