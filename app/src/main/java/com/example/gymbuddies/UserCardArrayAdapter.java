@@ -25,9 +25,11 @@ public class UserCardArrayAdapter extends ArrayAdapter<UserCard> {
             view = LayoutInflater.from(getContext()).inflate(R.layout.item, parent, false);
         }
         TextView name = (TextView) view.findViewById(R.id.name);
+        TextView age = (TextView) view.findViewById(R.id.age);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
         name.setText(item.getName());
+        age.setText(item.getAge());
         //set launch image now, will update later to use actual image urls
         //image.setImageResource(R.mipmap.ic_launcher);
         Glide.with(getContext()).load(item.getProfileImg()).into(image);

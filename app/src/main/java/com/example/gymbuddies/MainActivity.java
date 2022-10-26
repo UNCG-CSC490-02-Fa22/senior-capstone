@@ -49,14 +49,15 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     List<UserCard> rowItems;
     private int i;
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkUserSex();
+        //mAuth = FirebaseAuth.getInstance();
+        //checkUserSex();
         rowItems = new ArrayList<UserCard>();
 //        al.add("php");
 //        al.add("c");
@@ -70,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         String user2img = "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2F0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
         String user3img = "https://images.unsplash.com/photo-1577023311546-cdc07a8454d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
         String user4img = "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60";
-        UserCard user1 = new UserCard("1234", "User1", user1img);
-        UserCard user2 = new UserCard("1234", "User2", user2img);
-        UserCard user3 = new UserCard("1234", "User3", user3img);
-        UserCard user4 = new UserCard("1234", "User4", user4img);
+        UserCard user1 = new UserCard("1234", "User1", user1img, "2");
+        UserCard user2 = new UserCard("1234", "User2", user2img, "10");
+        UserCard user3 = new UserCard("1234", "User3", user3img, "3");
+        UserCard user4 = new UserCard("1234", "User4", user4img, "7");
 
         rowItems.add(user1);
         rowItems.add(user2);
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -241,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 if(snapshot.exists()){
                     String user1img = "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
 
-                    rowItems.add(new UserCard("someid", snapshot.getKey(), user1img));
+                    rowItems.add(new UserCard("someid", snapshot.getKey(), user1img, "10"));
                     arrayAdapter.notifyDataSetChanged();
                 }
             }

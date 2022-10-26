@@ -4,11 +4,13 @@ public class UserCard {
     private String userId;
     private String name;
     private String profileImg;
+    private String age;
 
-    public UserCard(String userId, String name, String profileImg) {
+    public UserCard(String userId, String name, String profileImg, String age) {
         this.userId = userId;
         this.name = name;
         this.profileImg = profileImg;
+        this.age = age;
     }
 
     public String getUserId() {
@@ -29,6 +31,14 @@ public class UserCard {
 
     public String getProfileImg() {
         return profileImg;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public void setProfileImg(String profileImg) {
