@@ -24,11 +24,12 @@
             android:layout_width="330dp"
             android:layout_height="500dp"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="435dp"
                 android:id="@+id/image"
-                android:scaleType="centerCrop"/>
+                android:layout_width="match_parent"
+                android:layout_height="409dp"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/name"
@@ -49,6 +50,15 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 tools:text="age" />
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:paddingLeft="20sp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:text="Greensboro" />
 
             <View
                 android:id="@+id/item_swipe_left_indicator"
