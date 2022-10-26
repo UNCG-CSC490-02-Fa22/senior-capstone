@@ -13,11 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GymBuddies"
         tools:targetApi="31">
-        <activity android:label="GymBuddies" android:name=".RegistrationPage"/>
+        <activity
+            android:name=".Login"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RegistrationPage"
+            android:label="GymBuddies" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginOrRegisterActivity"
-
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
