@@ -10,7 +10,22 @@
     android:paddingTop="20sp"
     android:paddingBottom="20sp"
     android:outlineProvider="bounds"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:onClick="logoutUser"
+        />
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:text="user"
+        />
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="330dp"
