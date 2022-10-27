@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
             }
 
-
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
@@ -191,10 +190,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openBio(UserCard userMatch){
-        Intent intent = new Intent(this, EditUserActivity.class);
+        Intent intent = new Intent(this, MatchBioActivity.class);
         intent.putExtra("userMatchName", userMatch.getName());
         startActivity(intent);
     }
+    
+      public void viewProfile(View view) {
+            Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
+            startActivity(intent);
+        }
+
     private String userSex;
     private String oppositeSex;
     //get sex of user and set opposite sex value based on that
@@ -412,12 +417,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //    }
 
-
-
-        public void viewProfile(View view) {
-            Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
-            startActivity(intent);
-        }
 
     public void logoutUser(View view){
 //        mAuth.signOut();
