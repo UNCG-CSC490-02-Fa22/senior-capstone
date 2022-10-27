@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 UserCard swipedUser = (UserCard) dataObject;
                 String swipedUserUserId = swipedUser.getUserId();
                 usersDb.child(oppositeSex).child(swipedUserUserId).child("Connections").child("Like").child(currentUid).setValue(true);
+                isAMatch(swipedUserUserId);
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
             }
 
@@ -164,6 +166,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void isAMatch(String swipedUserId) {
+        DatabaseReference currentUserConnectionsDb = usersDb.child(userSex).child(currentUid).child("Connections").child("Like").child(swipedUserId);
+        currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            //above local data is los inside these listeners so we can no longer use swipeUserId
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Toast.makeText(MainActivity.this, "new connection", Toast.LENGTH_LONG).show();
+                    usersDb.child(oppositeSex).child(snapshot.getKey())
+                            .child("Connections").child("Matches").child(currentUid).setValue(true);
+                    usersDb.child(userSex).child(currentUid)
+                            .child("Connections").child("Matches").child(snapshot.getKey()).setValue(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public void openBio(UserCard userMatch){
         Intent intent = new Intent(this, MatchBioActivity.class);
         intent.putExtra("userMatchName", userMatch.getName());
