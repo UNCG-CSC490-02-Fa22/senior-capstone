@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gymbuddies.Matches.MatchesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
@@ -20,9 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
-//    private ActivityMainBinding binding;
+    //    private ActivityMainBinding binding;
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //    }
     private UserCard[] userCards;
-   // private ArrayList<String> al;
+    // private ArrayList<String> al;
     private UserCardArrayAdapter arrayAdapter;
     private ListView listView;
     List<UserCard> rowItems;
@@ -79,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         rowItems.add(user2);
         rowItems.add(user3);
         rowItems.add(user4);
-
 
 
         arrayAdapter = new UserCardArrayAdapter(this, R.layout.item, rowItems);
@@ -139,11 +135,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void openBio(UserCard userMatch){
+
+    public void openBio(UserCard userMatch) {
         Intent intent = new Intent(this, EditUserActivity.class);
         intent.putExtra("userMatchName", userMatch.getName());
         startActivity(intent);
     }
+
     private String userSex;
     private String oppositeSex;
     //get sex of user and set opposite sex value based on that
@@ -324,18 +322,29 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
+    public void viewProfile(View view) {
+        Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
+        startActivity(intent);
+    }
 
-        public void viewProfile(View view) {
-            Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
-            startActivity(intent);
-        }
-
-    public void logoutUser(View view){
+    public void logoutUser(View view) {
 //        mAuth.signOut();
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(MainActivity.this, LoginOrRegisterActivity.class);
         startActivity(intent);
         finish();
+        return;
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    public void goToMatches(View view) {
+        Intent intent = new Intent(MainActivity.this, MatchesActivity.class);
+        startActivity(intent);
         return;
     }
 }
