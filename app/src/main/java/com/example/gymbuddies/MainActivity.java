@@ -410,7 +410,10 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-
+    public void viewProfile(View view){
+        Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
+        startActivity(intent);
+    }
 
     public void logoutUser(View view){
 //        mAuth.signOut();

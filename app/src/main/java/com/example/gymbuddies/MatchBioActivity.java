@@ -13,7 +13,7 @@ public class MatchBioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_user_bio);
+        setContentView(R.layout.activity_match_bio);
 
         String value = "";
         String [] interestList = {"running", "lifting", "yoga"};
