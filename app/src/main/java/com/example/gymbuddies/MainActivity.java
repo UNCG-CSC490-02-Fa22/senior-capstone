@@ -194,12 +194,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("userMatchName", userMatch.getName());
         startActivity(intent);
     }
-    
-      public void viewProfile(View view) {
-            Intent intent = new Intent(MainActivity.this, EditUserActivity.class);
-            startActivity(intent);
-        }
-
     private String userSex;
     private String oppositeSex;
     //get sex of user and set opposite sex value based on that
