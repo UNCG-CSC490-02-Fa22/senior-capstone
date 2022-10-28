@@ -205,18 +205,12 @@ public class EditUserActivity extends AppCompatActivity {
         }
 
     }
-
-
-
-
              public void getName(EditText n,EditText b,EditText g, EditText sl){
 
 
                  if (mauth.getCurrentUser() != null) {
 
                      String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    // String uSex = FirebaseAuth.getInstance().getCurrentUser();
-                     checkUserSex();
                      DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Male");
 
 
@@ -225,7 +219,8 @@ public class EditUserActivity extends AppCompatActivity {
                          @Override
                          public void onDataChange(DataSnapshot dataSnapshot) {
                              for (DataSnapshot datas : dataSnapshot.getChildren()) {
-
+                                 String SX = dataSnapshot.child("sex").getValue().toString();
+                                 MF = SX;
                                  String N = dataSnapshot.child("name").getValue().toString();
                                  String B = dataSnapshot.child("bio").getValue().toString();
                                  String G = dataSnapshot.child("goal").getValue().toString();
@@ -245,77 +240,14 @@ public class EditUserActivity extends AppCompatActivity {
                      }
 
                  );}
+                // return rowItems.get(0).getName().toString();
+                //  ;
+                 DataSnapshot dataSnapshot ;
 
-
-                }
-
-    public void checkUserSex() {
-
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference maleDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Male");
-        maleDb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //if new child/user is added here in the male db, then we know the sex
-                if (snapshot.getKey().equals(user.getUid())) {
-                    MF = "Male";
-
+                // nameS = dataSnapshot.child("name").getValue(String.class);
 
                 }
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        DatabaseReference femaleDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Female");
-        femaleDb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //if new child/user is added here in the male db, then we who the sex
-                if (snapshot.getKey().equals(user.getUid())) {
-                    MF = "Female";
-
-
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });}
 
 
 
@@ -352,7 +284,7 @@ public class EditUserActivity extends AppCompatActivity {
                 userInfo.put("skillLevel", skillLevelS);
                 userInfo.put("goal", goalS);
                 DatabaseReference currentUserDb = FirebaseDatabase.getInstance()
-                        .getReference().child("Users").child("Male").child(userID);
+                        .getReference().child("Users").child(MF).child(userID);
                 currentUserDb.updateChildren(userInfo);
 
 
