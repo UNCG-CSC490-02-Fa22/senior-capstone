@@ -90,7 +90,7 @@ public class EditUserActivity extends AppCompatActivity {
         name.setFilters(new InputFilter[] {new InputFilter.LengthFilter(30)});
         goal.setFilters(new InputFilter[] {new InputFilter.LengthFilter(30)});
         skillLevel.setFilters(new InputFilter[] {new InputFilter.LengthFilter(16)});
-     //   TextView interest = (TextView) findViewById(R.id.interest);
+        //   TextView interest = (TextView) findViewById(R.id.interest);
 
         ImageButton interest1b = (ImageButton) findViewById(R.id.interest1_b);
         ImageButton interest2b = (ImageButton) findViewById(R.id.interest2_b);
@@ -103,13 +103,15 @@ public class EditUserActivity extends AppCompatActivity {
         String bioDesc = "I do not have a gym membership, I much prefer trails and hiking or playing rounds of disc golf, you know the lighter activities that doesn't always feel like working out, but more of being active. I am not opposed to finding a gym partner if that's your thing, but I have reached a plateau after losing 65 lbs in the last half year and I think having someone to be active with can help me turn the corner. Any ages or fitness levels are welcome as well as any gender. I work in Raleigh area and live in Sanford to give a better idea on a more local area.\n" +
                 "\n";
 
-        getName(name,bio,goal,skillLevel);
+
 
 
         bio.setText(bioDesc.length() > 100 ? bioDesc.substring(0, 100) : bioDesc);
         goal.setText("Develop gym routine");
         skillLevel.setText("Beginner");
-      //  interest.setText("Weightlifting" + " " + "Yoga");
+
+        getName(name,bio,goal,skillLevel);
+        //  interest.setText("Weightlifting" + " " + "Yoga");
 
         setIcon(interestList[0], interest1b, interest1t);
         setIcon(interestList[1], interest2b, interest2t);
@@ -133,8 +135,8 @@ public class EditUserActivity extends AppCompatActivity {
 
 
 
-    
-       // name.setText("myName");
+
+        // name.setText("myName");
         CardView card = findViewById(R.id.cardView);
         card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,25 +145,25 @@ public class EditUserActivity extends AppCompatActivity {
             }
         });
     }
-   
-    //public void getName(){
-      //  DatabaseReference sameSexDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userSex);
-      //  sameSexDb.addChildEventListener(new ChildEventListener() {
-      //      @Override
-       //     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-         //       //if new child/user is added here in the male db, then we who the sex
-           //     if(snapshot.exists()){
-             //       String user1img = "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
 
-               //     rowItems.add(new UserCard(snapshot.getKey(), snapshot.child("name").getValue().toString(), user1img, "10"));
-                //    arrayAdapter.notifyDataSetChanged();
-               // }
-               public void removeFirstObjectInAdapter() {
-                   // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                   Log.d("LIST", "removed object!");
-                   rowItems.remove(0);
-                   arrayAdapter.notifyDataSetChanged();
-               }       // }
+    //public void getName(){
+    //  DatabaseReference sameSexDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userSex);
+    //  sameSexDb.addChildEventListener(new ChildEventListener() {
+    //      @Override
+    //     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+    //       //if new child/user is added here in the male db, then we who the sex
+    //     if(snapshot.exists()){
+    //       String user1img = "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
+
+    //     rowItems.add(new UserCard(snapshot.getKey(), snapshot.child("name").getValue().toString(), user1img, "10"));
+    //    arrayAdapter.notifyDataSetChanged();
+    // }
+    public void removeFirstObjectInAdapter() {
+        // this is the simplest way to delete an object from the Adapter (/AdapterView)
+        Log.d("LIST", "removed object!");
+        rowItems.remove(0);
+        arrayAdapter.notifyDataSetChanged();
+    }       // }
 
 
 
@@ -205,52 +207,49 @@ public class EditUserActivity extends AppCompatActivity {
         }
 
     }
-             public void getName(EditText n,EditText b,EditText g, EditText sl){
-
-
-                 if (mauth.getCurrentUser() != null) {
-
-                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Male");
-
-
-                     DatabaseReference userReference = databaseReference.child(uid);
-                     userReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                         @Override
-                         public void onDataChange(DataSnapshot dataSnapshot) {
-                             for (DataSnapshot datas : dataSnapshot.getChildren()) {
-                                 String SX = dataSnapshot.child("sex").getValue().toString();
-                                 MF = SX;
-                                 String N = dataSnapshot.child("name").getValue().toString();
-                                 String B = dataSnapshot.child("bio").getValue().toString();
-                                 String G = dataSnapshot.child("goal").getValue().toString();
-                                 String SL = dataSnapshot.child("skillLevel").getValue().toString();
-                                 n.setText(N);
-                                 b.setText(B);
-                                 g.setText(G);
-                                sl.setText(SL);
-                             }
-                         }
-
-
-                         @Override
-                         public void onCancelled(DatabaseError databaseError) {
-                             throw databaseError.toException();
-                         }
-                     }
-
-                 );}
-                // return rowItems.get(0).getName().toString();
-                //  ;
-                 DataSnapshot dataSnapshot ;
-
-                // nameS = dataSnapshot.child("name").getValue(String.class);
-
-                }
 
 
 
 
+    public void getName(EditText n,EditText b,EditText g, EditText sl){
+
+
+        if (mauth.getCurrentUser() != null) {
+
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            // String uSex = FirebaseAuth.getInstance().getCurrentUser();
+
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Male");
+
+
+            DatabaseReference userReference = databaseReference.child(uid);
+            userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                             @Override
+                                                             public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                 for (DataSnapshot datas : dataSnapshot.getChildren()) {
+
+                                                                     String N = dataSnapshot.child("name").getValue().toString();
+                                                                     String B = dataSnapshot.child("bio").getValue().toString();
+                                                                     String G = dataSnapshot.child("goal").getValue().toString();
+                                                                     String SL = dataSnapshot.child("skillLevel").getValue().toString();
+                                                                     n.setText(N);
+                                                                     b.setText(B);
+                                                                     g.setText(G);
+                                                                    sl.setText(SL);
+                                                                 }
+                                                             }
+
+
+                                                             @Override
+                                                             public void onCancelled(DatabaseError databaseError) {
+                                                                 throw databaseError.toException();
+                                                             }
+                                                         }
+
+            );}
+
+
+    }
 
 
 
@@ -270,34 +269,39 @@ public class EditUserActivity extends AppCompatActivity {
 
 
 
-   // private ArrayList<String> MatchResults = new ArrayList<String>()   ;
+
+
+
+
+
+    // private ArrayList<String> MatchResults = new ArrayList<String>()   ;
     //private List<String> getDataSetMatches() {return MatchResults} ;
     private void saveUserInfo(EditText b, EditText n, EditText s, EditText g) {
-                bioS = b.getText().toString();
-                nameS = n.getText().toString();
-                skillLevelS = s.getText().toString();
-                goalS = g.getText().toString();
+        bioS = b.getText().toString();
+        nameS = n.getText().toString();
+        skillLevelS = s.getText().toString();
+        goalS = g.getText().toString();
 
-                Map userInfo = new HashMap();
-                userInfo.put("bio", bioS);
-                userInfo.put("name", nameS);
-                userInfo.put("skillLevel", skillLevelS);
-                userInfo.put("goal", goalS);
-                DatabaseReference currentUserDb = FirebaseDatabase.getInstance()
-                        .getReference().child("Users").child(MF).child(userID);
-                currentUserDb.updateChildren(userInfo);
+        Map userInfo = new HashMap();
+        userInfo.put("bio", bioS);
+        userInfo.put("name", nameS);
+        userInfo.put("skillLevel", skillLevelS);
+        userInfo.put("goal", goalS);
+        DatabaseReference currentUserDb = FirebaseDatabase.getInstance()
+                .getReference().child("Users").child("Male").child(userID);
+        currentUserDb.updateChildren(userInfo);
 
 
-                AlertDialog alertDialog = new AlertDialog.Builder(EditUserActivity.this).create();
-                alertDialog.setTitle("Success!");
-                alertDialog.setMessage("Your Profile was successfully updated");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-            }
+        AlertDialog alertDialog = new AlertDialog.Builder(EditUserActivity.this).create();
+        alertDialog.setTitle("Success!");
+        alertDialog.setMessage("Your Profile was successfully updated");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
 
-        }
+}

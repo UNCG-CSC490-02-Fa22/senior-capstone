@@ -89,6 +89,9 @@ public class RegistrationPage extends AppCompatActivity {
                             userInfo.put("name", name);
                             userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
+                            userInfo.put("bio", "Write your Bio here!");
+                            userInfo.put("skillLevel", "Intermediate!");
+                            userInfo.put("goal", "your goals");
                             currentUserDb.updateChildren(userInfo);
                         }
                     }
