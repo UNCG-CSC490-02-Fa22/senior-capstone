@@ -6,11 +6,11 @@ public class UserCard {
     private String profileImg;
     private String age;
 
-    public UserCard(String userId, String name, String profileImg, String age) {
+    public UserCard(String userId, String name, String profileImg) {
         this.userId = userId;
         this.name = name;
         this.profileImg = profileImg;
-        this.age = age;
+        //this.age = age;
     }
 
     public String getUserId() {

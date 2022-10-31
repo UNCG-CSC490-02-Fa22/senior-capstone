@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +33,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SettingsActivity extends AppCompatActivity {
+public class
+
+SettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField;
 
@@ -109,7 +111,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(map.get("sex")!=null){
                         userSex = map.get("sex").toString();
                     }
-                    Glide.clear(mProfileImage);
+                    //.clear(mProfileImage);
                     if(map.get("profileImageUrl")!=null){
                         profileImageUrl = map.get("profileImageUrl").toString();
                         switch(profileImageUrl){
@@ -163,10 +165,10 @@ public class SettingsActivity extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    //Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                     Map userInfo = new HashMap();
-                    userInfo.put("profileImageUrl", downloadUrl.toString());
+                    //userInfo.put("profileImageUrl", downloadUrl.toString());
                     mUserDatabase.updateChildren(userInfo);
 
                     finish();

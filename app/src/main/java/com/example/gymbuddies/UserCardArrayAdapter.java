@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class UserCardArrayAdapter extends ArrayAdapter<UserCard> {
+
+
     private final String comma = ",";
 
     public UserCardArrayAdapter(@NonNull Context context, int resource, @NonNull List<UserCard> objects) {
